@@ -1,4 +1,4 @@
-package technicalblog.config;
+package st.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -23,7 +23,7 @@ public class JpaConfig {
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("org.postgresql.Driver");
-        ds.setUrl("jdbc:postgresql://localhost:5432/technicalblog");
+        ds.setUrl("jdbc:postgresql://localhost:5432/stdemo");
         ds.setUsername("postgres");
         ds.setPassword("admin");
         return ds;
