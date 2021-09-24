@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>ST</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+
+        .note{
+
+            color: #f4ffff;
+            font: "Lucida Sans Unicode";
+            box-shadow: #4CAF50;
+            font-style: italic;
+            border-color: #8c8c8c;
+            padding: 0%;
+            margin: 0%;
+        }
+        html{
+            background-color: #3ea056;
+
+        }
+
+        form{
+
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 30%;
+            float: left;
+            margin-right: 0%;
+            padding-right: 0%;
+        }
+        table{
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 70%;
+            float: left;
+            background-color: #8c8c8c;
+            padding-left: 0%;
+            margin-left: 0%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        input[type=text], select {
+            width: 40%;
+            padding: 5px 8px;
+            margin: 5px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+
+        }
+
+         p{
+             color: #d9edf7;
+             font-size: large;
+             padding-bottom: 0%;
+             margin-bottom: 0%;
+             margin-top: 1%;
+         }
+
+        input[type=submit] {
+            width: 20%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 7px;
+            margin: 0px 0;
+            border: inherit;
+            border-radius: 4px;
+            cursor: pointer;
+            float: left;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+
+
+
+    </style>
+
+</head>
+
+<body>
+    <h1>DETAILS FORM</h1>
+    <form id="form_id" th:action="@{/create}" th:object="${users}" method="post">
+
+        <div>Name:</div>
+        <div><input type="text" name="name" /></div>
+        <div>Post Title:</div>
+        <div><input type="text" id="mobile" name="mobile" /></div>
+        <div>Post Title:</div>
+        <div><input type="text" id="email" name="email" /></div>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <form th:action="@{/userByName}" method="get">
+
+        <p><label>Name:</label> </p>
+        <input type="text" id="name" name="name"/>
+        <button type="submit">Submit</button>
+    </form>
+
+
+
+
+    <table id="table" border="1" class="myTable">
+    <tr>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Email</th>
+    </tr>
+    <tr th:each = "user : ${users}">
+
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.mobile}"></td>
+        <td th:text="${user.email}"></td>
+
+        <td>
+            <form th:action="@{/delete(id=${user.id})}" th:method="delete">
+                <input type="submit" value="Delete" />
+            </form>
+
+        </td>
+    </tr>
+    </table>
+
+
+
+</body>
+</html>
